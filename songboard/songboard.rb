@@ -1,8 +1,5 @@
-song_title = "End of the Circus (Death of a Clown)"
-song_album = "The Heavy EP"
-song_bpm = "95"
-song_link = "https://drive.google.com/drive/folders/1CDAL2z-dVjoD1W1CcyAdKW1nTyfZnwy8"
 
+songs = {}
 
 def add_song
   puts "Please enter a song title: "         # Get song title
@@ -13,8 +10,18 @@ def add_song
   puts "You have input " + song_album + "."  # Validating input
   puts "Please enter the BPM of the song: "  # Get BPM
   song_bpm = gets.chomp()
-  puts "You have input " + song_bpm + "."  # Validating input
+  puts "You have input " + song_bpm + "."    # Validating input
 end
 
 add_song()
 
+
+#######
+#NOTES#
+#######
+# CRUD features I'm hoping to implement:
+# add - Add a new song 
+# delete - Remove an existing song
+# modify - Modify an existing song
+# list - Show all songs
+# find - Search for specific value
