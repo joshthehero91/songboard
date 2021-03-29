@@ -1,27 +1,22 @@
-
-songs = {}
-
-def add_song
-  puts "Please enter a song title: "         # Get song title
-  song_title = gets.chomp()
-  puts "You have input " + song_title + "."  # Validating input
-  puts "Please enter an album: "             # Get album name
-  song_album = gets.chomp()
-  puts "You have input " + song_album + "."  # Validating input
-  puts "Please enter the BPM of the song: "  # Get BPM
-  song_bpm = gets.chomp()
-  puts "You have input " + song_bpm + "."    # Validating input
+class Song                                   # create the Song class
+  attr_accessor :title, :album, :bpm         # require title, album, and BPM
 end
 
-add_song()
+def add_song()                               # function to add a new song to music library
+  puts "Please enter a song title:"          # get song title
+  title = gets.chomp().to_s                  # convert title to string
+  puts "Please enter an album:"              # get album name
+  album = gets.chomp().to_s                  # convert album to string
+  puts "Please enter the BPM of the song:"   # get BPM
+  bpm = gets.chomp().to_s                    # convert BPM to string
 
+  s = Song.new                               # create instance
+  s.title = title                            # set title
+  s.album = album                            # set album
+  s.bpm   = bpm                              # set bpm
+  puts "TITLE: " + s.title                   # verify title
+  puts "ALBUM: " + s.album                   # verify album
+  puts "BPM:   " + s.bpm                     # verify BPM
+end
 
-#######
-#NOTES#
-#######
-# CRUD features I'm hoping to implement:
-# add - Add a new song 
-# delete - Remove an existing song
-# modify - Modify an existing song
-# list - Show all songs
-# find - Search for specific value
+add_song()                                   # run to add a new song

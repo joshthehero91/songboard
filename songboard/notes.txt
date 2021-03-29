@@ -1,0 +1,9 @@
+#########
+# NOTES #
+#########
+# CRUD features I'm hoping to implement:
+# add - Add a new song 
+# delete - Remove an existing song
+# modify - Modify an existing song
+# list - Show all songs
+# find - Search for specific value
