@@ -16,8 +16,19 @@ def add_song()                               # function to add a new song to mus
   s.title = title                            # set title
   s.album = album                            # set album
   s.bpm   = bpm                              # set bpm
-   
-  song1 = { "title" => s.title, "album" => s.album, "bpm" => s.bpm  }
+  
+  if File.exist? "library.json"
+    file = File.read("library.json")
+    library = JSON.parse(file)
+  else
+    library = {}
+  end
+
+  song_count = library.keys.count
+  song_number = song_count + 1 
+  song = { "title" => s.title, "album" => s.album, "bpm" => s.bpm  }
+  temp_library = { song_number => song }
+  library.merge!(temp_library)
 
   puts "TITLE: " + s.title                   # verify title
   puts "ALBUM: " + s.album                   # verify album
@@ -27,7 +38,7 @@ def add_song()                               # function to add a new song to mus
   answer = gets.chomp().downcase.to_s
   if answer == "y"
     puts "Writing to file..."
-    File.write("library.json",song1.to_json)
+    File.write("library.json",library.to_json)
     puts ""
   elsif answer == "n"
     puts "Please try again."
