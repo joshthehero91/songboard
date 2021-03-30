@@ -17,7 +17,8 @@ def add_song                                                    # function to ad
   s.album = album                                               # set album
   s.bpm   = bpm                                                 # set bpm
   
-  if File.exist? "library.json"                                 # check if library.json exists
+  if 
+    File.exist? "library.json"                                  # check if library.json exists
     file = File.read("library.json")                            # open file
     library = JSON.parse(file)                                  # read file
   else                                                          # otherwise make an empty hash
@@ -41,12 +42,14 @@ def add_song                                                    # function to ad
   
   puts "Is this correct? (y/n)"                                 # allow user to verify data
   answer = gets.chomp().downcase.to_s
-  if answer == "y"                                              # if everything looks correct
+  if 
+    answer == "y"                                               # if everything looks correct
     puts "Writing to file..."                                   # write to library.json file
     File.write("library.json",library.to_json)                 
     puts ""
-  elsif answer == "n"                                           # or allow user to retry
-    puts "Please try again."
+  elsif 
+    answer == "n"                                               # or allow user to retry
+    puts "Please try again."   
     puts ""
     add_song()
   else                                                          # otherwise verify it's only "y" or "n"
@@ -58,8 +61,9 @@ def add_song                                                    # function to ad
 end
 
 def list_songs                                                  # function to list out all the songs in music library
-  if !File.exist? "library.json"                              # check if library.json does not exists
-  puts "There are no songs in SongBoard."                     # there are no songs to read
+  if 
+    !File.exist? "library.json"                                 # check if library.json does not exists
+    puts "There are no songs in SongBoard."                     # there are no songs to read
   else                                                          # if library.json does exist 
     file = File.read("library.json")                            # open file
     library = JSON.parse(file)                                  # read file  
@@ -76,8 +80,42 @@ def list_songs                                                  # function to li
 end
 
 def delete_song
-  puts "Option not yet available. Please select another option."
-  main_menu
+  if 
+    !File.exist? "library.json"                                 # check if library.json does not exists
+    puts "There are no songs in SongBoard."                     # there are no songs to read
+    main_menu()
+  else                                                          # if library.json does exist 
+    file = File.read("library.json")                            # open file
+    library = JSON.parse(file)                                  # read file    
+  end
+  
+  puts """
+  Please provide the name of the song being removed
+  or use \"back\" to return to the main menu:
+  """
+  choice = gets.chomp().to_s
+  
+  if 
+    choice == "back"
+    main_menu()
+  else
+    library.each do |track, song| 
+      if
+        song.has_value? choice == false
+        next
+      elsif  
+        song.has_value? choice
+        title, album, bpm = song.values
+        puts "Is this the song you would like to remove?"    
+        puts "|------------------------------------------------"
+        puts "| TITLE: " + title.to_s
+        puts "| ALBUM: " + album.to_s
+        puts "| BPM:   " + bpm.to_s
+        puts "|------------------------------------------------"
+      end 
+    end
+  end
+  main_menu()
 end
 
 def modify_song
