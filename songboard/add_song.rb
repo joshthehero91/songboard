@@ -1,9 +1,9 @@
 require 'json'                                                  # nessecary to write json files
-require 'main_menu'
-require 'delete_song'
-require 'modify_song'
-require 'list_songs'
-require 'modify_song'
+require_relative 'main_menu'
+require_relative 'delete_song'
+require_relative 'modify_song'
+require_relative 'list_songs'
+require_relative 'modify_song'
 
 class Song                                                      # create the Song class
   attr_accessor :title, :album, :bpm                            # require title, album, and BPM

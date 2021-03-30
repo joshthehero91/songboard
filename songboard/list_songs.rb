@@ -1,9 +1,9 @@
 require 'json'                                                  # nessecary to write json files
-require 'add_song'
-require 'delete_song'
-require 'modify_song'
-require 'main_menu'
-require 'modify_song'
+require_relative 'add_song'
+require_relative 'delete_song'
+require_relative 'modify_song'
+require_relative 'main_menu'
+require_relative 'modify_song'
 
 def list_songs                                                  # function to list out all the songs in music library
   if
